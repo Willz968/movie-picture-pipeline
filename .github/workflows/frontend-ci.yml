@@ -7,6 +7,7 @@ on:
       - main
     paths:
       - 'frontend/**'
+  workflow_dispatch:
 
 jobs:
   lint:
@@ -99,6 +100,8 @@ jobs:
 
 
   build:
+
+    needs: [ lint, test ]
 
     runs-on: ubuntu-latest
 
