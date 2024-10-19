@@ -6,7 +6,7 @@ on:
     branches:
       - main
     paths:
-      - 'frontend/**'
+      - 'starter/frontend/**'
   workflow_dispatch:
 
 env:
@@ -49,13 +49,13 @@ jobs:
       - if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}
         name: List the state of node modules
         continue-on-error: true
-        run: cd frontend && npm list
+        run: cd starter/frontend && npm list
 
       # Install the dependencies.
-      - run: cd frontend && npm ci
+      - run: cd starter/frontend && npm ci
 
       # Run the linter.
-      - run: cd frontend && npm run lint
+      - run: cd starter/frontend && npm run lint
   
   test:
 
@@ -93,13 +93,13 @@ jobs:
       - if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}
         name: List the state of node modules
         continue-on-error: true
-        run: cd frontend && npm list
+        run: cd starter/frontend && npm list
 
       # Install the dependencies.
-      - run: cd frontend && npm ci
+      - run: cd starter/frontend && npm ci
 
       # Run the tests.
-      - run: cd frontend && npm test
+      - run: cd starter/frontend && npm test
 
 
   build:
@@ -140,13 +140,13 @@ jobs:
       - if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}
         name: List the state of node modules
         continue-on-error: true
-        run: cd frontend && npm list
+        run: cd starter/frontend && npm list
 
       # Install the dependencies.
-      - run: cd frontend && npm ci
+      - run: cd starter/frontend && npm ci
 
       # Run the tests.
-      - run: cd frontend && npm test
+      - run: cd starter/frontend && npm test
 
       # Build the application image using Docker.
       - run: docker build --build-arg=$REACT_APP_MOVIE_API_URL --tag=mp-frontend:latest .
