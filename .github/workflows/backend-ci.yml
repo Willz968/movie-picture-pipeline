@@ -28,7 +28,7 @@ jobs:
       - run: pip install pipenv
 
       # Install the dependencies.
-      - run: cd starter/backend && pipenv install
+      - run: cd starter/backend && pipenv install --dev
 
       # Run the linter.
       - run: cd starter/backend && pipenv run lint
@@ -48,7 +48,7 @@ jobs:
       - run: pip install pipenv
 
       # Install the dependencies.
-      - run: cd starter/backend && pipenv install
+      - run: cd starter/backend && pipenv install --dev
 
       # Run the tests.
       - run: cd starter/backend && pipenv run test
@@ -71,7 +71,7 @@ jobs:
       - run: pip install pipenv
 
       # Install the dependencies.
-      - run: cd starter/backend && pipenv install
+      - run: cd starter/backend && pipenv install --dev
 
       # Build the application image using Docker.
       - run: cd starter/backend && docker build --tag mp-backend:latest .
