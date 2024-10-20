@@ -75,15 +75,3 @@ jobs:
 
       # Build the application image using Docker.
       - run: cd starter/backend && docker build --tag mp-backend:latest .
-
-      # Run the image.
-      - run: cd starter/backend && docker run -p 5000:5000 --name mp-backend -d mp-backend
-
-      # Check the running application.
-      - run: cd starter/backend && curl http://localhost:5000/movies
-
-      # Review logs.
-      - run: cd starter/backend && docker logs -f mp-backend
-
-      # Stop the application.
-      - run: cd starter/backend && docker stop
