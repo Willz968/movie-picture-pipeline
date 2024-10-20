@@ -17,19 +17,12 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    #Use a matrix strategy to determine Node.js versions to use
-    strategy:
-      matrix:
-        node-version: [16.x, 18.x]
-
     steps:
       # Check out the code from the repository.
       - uses: actions/checkout@v3
 
-      # Set up a Node.js environment using the specified node version.
-      - uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
+      # Set up a Node.js environment using the node version specified in .nvmrc.
+      - run: cd starter/frontend && nvm use
 
       # Perform a cache action to restore cache before dependency install
       - name: Cache node modules
@@ -61,19 +54,12 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    #Use a matrix strategy to determine Node.js versions to use
-    strategy:
-      matrix:
-        node-version: [16.x, 18.x]
-
     steps:
       # Check out the code from the repository.
       - uses: actions/checkout@v3
 
-      # Set up a Node.js environment using the specified node version.
-      - uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
+      # Set up a Node.js environment using the node version specified in .nvmrc.
+      - run: cd starter/frontend && nvm use
 
       # Perform a cache action to restore cache before dependency install
       - name: Cache node modules
@@ -101,26 +87,18 @@ jobs:
       # Run the tests.
       - run: cd starter/frontend && npm test
 
-
   build:
 
     needs: [ lint, test ]
 
     runs-on: ubuntu-latest
 
-    #Use a matrix strategy to determine Node.js versions to use
-    strategy:
-      matrix:
-        node-version: [16.x, 18.x]
-
     steps:
       # Check out the code from the repository.
       - uses: actions/checkout@v3
 
-      # Set up a Node.js environment using the specified node version.
-      - uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
+      # Set up a Node.js environment using the node version specified in .nvmrc.
+      - run: cd starter/frontend && nvm use
 
       # Perform a cache action to restore cache before dependency install
       - name: Cache node modules
