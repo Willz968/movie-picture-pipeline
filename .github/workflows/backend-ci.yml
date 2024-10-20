@@ -1,0 +1,89 @@
+name: Backend Continuous Integration
+
+# Ensure the workflow runs on every pull request against the main branch
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'starter/backend/**'
+  workflow_dispatch:
+
+env:
+  REACT_APP_MOVIE_API_URL: http://localhost:5000
+
+jobs:
+  lint:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      # Check out the code from the repository.
+      - uses: actions/checkout@v3
+
+      # Install Python
+      - run: sudo apt update && sudo apt install python3
+
+      # Install Pipenv
+      - run: pip install pipenv
+
+      # Install the dependencies.
+      - run: cd starter/backend && pipenv install
+
+      # Run the linter.
+      - run: cd starter/backend && pipenv run lint
+  
+  test:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      # Check out the code from the repository.
+      - uses: actions/checkout@v3
+
+      # Install Python
+      - run: sudo apt update && sudo apt install python3
+
+      # Install Pipenv
+      - run: pip install pipenv
+
+      # Install the dependencies.
+      - run: cd starter/backend && pipenv install
+
+      # Run the tests.
+      - run: cd starter/backend && pipenv run test
+
+
+  build:
+
+    needs: [ lint, test ]
+
+    runs-on: ubuntu-latest
+
+    steps:
+      # Check out the code from the repository.
+      - uses: actions/checkout@v3
+
+      # Install Python
+      - run: sudo apt update && sudo apt install python3
+
+      # Install Pipenv
+      - run: pip install pipenv
+
+      # Install the dependencies.
+      - run: cd starter/backend && pipenv install
+
+      # Build the application image using Docker.
+      - run: cd starter/backend && docker build --tag mp-backend:latest .
+
+      # Run the image.
+      - run: cd starter/backend && docker run -p 5000:5000 --name mp-backend -d mp-backend
+
+      # Check the running application.
+      - run: cd starter/backend && curl http://localhost:5000/movies
+
+      # Review logs.
+      - run: cd starter/backend && docker logs -f mp-backend
+
+      # Stop the application.
+      - run: cd starter/backend && docker stop
