@@ -1,11 +1,20 @@
 # Review URLS
 
 - **GitHub repository:** `https://github.com/Willz968/movie-picture-pipeline`
-- **Frontend service URL:** `a9f97aec0b3d44ab0832e831151a6109-1552262300.us-east-1.elb.amazonaws.com`
-- **Backend service URL:** `ac1a02c8ce234429b85c18db9a139773-426822124.us-east-1.elb.amazonaws.com/movies`
+- **Frontend service URL:** `aa64bb13244c04dc8b39d40fc22644ca-698615790.us-east-1.elb.amazonaws.com`
+- **Backend service URL:** `a31bd39e0840b4e8899846b694e86833-2066896013.us-east-1.elb.amazonaws.com/movies`
 
+## Kubernetes Pods running
 ![Kubernetes Pods running](screenshots/kubectl_pods.png)
+
+## Kubernetes Services running
 ![Kubernetes Services running](screenshots/kubectl_svc.png)
+
+## Frontend running
+![Frontend running](screenshots/frontend.png)
+
+## Backend running
+![Backend running](screenshots/backend.png)
 
 # Movie Picture Pipeline
 
