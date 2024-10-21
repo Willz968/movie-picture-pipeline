@@ -149,4 +149,4 @@ jobs:
       - run: cd starter/frontend && npm test
 
       # Build the application image using Docker.
-      - run: cd starter/frontend && docker build --build-arg=$REACT_APP_MOVIE_API_URL --tag=mp-frontend:latest .
+      - run: cd starter/frontend && docker build --build-arg REACT_APP_MOVIE_API_URL=$REACT_APP_MOVIE_API_URL --tag=mp-frontend:latest .
