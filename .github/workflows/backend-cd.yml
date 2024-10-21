@@ -102,7 +102,12 @@ jobs:
       - run: aws eks update-kubeconfig --region $AWS_REGION --name cluster
 
       # Deploy application to EKS cluster
-      - run: |
+      - name: Deploy application to EKS cluster
+        env:
+          REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          REPOSITORY: frontend
+          IMAGE_TAG: ${{ github.sha }}
+        run: |
           cd starter/backend/k8s
           kustomize edit set image backend=$REGISTRY/$REPOSITORY:$IMAGE_TAG
           kustomize build | kubectl apply -f -
