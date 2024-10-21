@@ -22,7 +22,7 @@ jobs:
       - run: sudo apt update && sudo apt install python3
 
       # Install Pipenv
-      - run: pip install pipenv
+      - run: cd starter/backend && pip install pipenv
 
       # Install the dependencies.
       - run: cd starter/backend && pipenv install --dev
@@ -42,7 +42,7 @@ jobs:
       - run: sudo apt update && sudo apt install python3
 
       # Install Pipenv
-      - run: pip install pipenv
+      - run: cd starter/backend && pip install pipenv
 
       # Install the dependencies.
       - run: cd starter/backend && pipenv install --dev
@@ -65,7 +65,7 @@ jobs:
       - run: sudo apt update && sudo apt install python3
 
       # Install Pipenv
-      - run: pip install pipenv
+      - run: cd starter/backend && pip install pipenv
 
       # Install the dependencies.
       - run: cd starter/backend && pipenv install --dev
