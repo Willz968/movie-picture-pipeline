@@ -104,7 +104,7 @@ jobs:
       - name: Deploy application to EKS cluster
         env:
           REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          REPOSITORY: frontend
+          REPOSITORY: backend
           IMAGE_TAG: ${{ github.sha }}
         run: |
           cd starter/backend/k8s
