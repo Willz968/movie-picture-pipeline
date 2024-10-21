@@ -1,3 +1,12 @@
+# Review URLS
+
+- **GitHub repository:** `https://github.com/Willz968/movie-picture-pipeline`
+- **Frontend service URL:** `a9f97aec0b3d44ab0832e831151a6109-1552262300.us-east-1.elb.amazonaws.com`
+- **Backend service URL:** `ac1a02c8ce234429b85c18db9a139773-426822124.us-east-1.elb.amazonaws.com/movies`
+
+![Kubernetes Pods running](screenshots/kubectl_pods.png)
+![Kubernetes Services running](screenshots/kubectl_svc.png)
+
 # Movie Picture Pipeline
 
 You've been brought on as the DevOps resource for a development team that manages a web application that is a catalog of Movie Picture movies. They're in dire need of automating their development workflows in hopes of accelerating their release cycle. They'd like to use Github Actions to automate testing, building and deploying their applications to an existing Kubernetes cluster.
